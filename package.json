@@ -1,0 +1,9 @@
+{
+  "name": "nelmech-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "NELMECH static site with Vercel serverless contact API",
+  "dependencies": {
+    "nodemailer": "^6.9.15"
+  }
+}
