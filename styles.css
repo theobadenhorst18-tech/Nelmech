@@ -29,7 +29,7 @@
     text-decoration: none;
   }
   
-  /* HERO — .hero-bg img sits behind heading (images/welder.jpg) */
+  /* HERO -- .hero-bg img sits behind heading (Images/Welder.jpg) */
   .hero {
     position: relative;
     min-height: 90vh;
@@ -230,19 +230,19 @@
 }
 
 #services .card--electrical-installations .card {
-  background: #1e293b url("images/Electrical Installations.jpg") center / cover no-repeat;
+  background: #1e293b url("Images/Electrical Installations.jpg") center / cover no-repeat;
 }
 
 #services .card--maintenance-repairs .card {
-  background: #1e293b url("images/Maintenance and Installations.jpg") center / cover no-repeat;
+  background: #1e293b url("Images/Maintenance and Installations.jpg") center / cover no-repeat;
 }
 
 #services .card--industrial-automation .card {
-  background: #1e293b url("images/Industrial Automation.jpg") center / cover no-repeat;
+  background: #1e293b url("Images/Industrial Automation.jpg") center / cover no-repeat;
 }
 
 #services .card--mechanical-engineering .card {
-  background: #1e293b url("images/Mechanical Engineering.jpg") center / cover no-repeat;
+  background: #1e293b url("Images/Mechanical Engineering.jpg") center / cover no-repeat;
 }
 
 .card-link:hover .card {
