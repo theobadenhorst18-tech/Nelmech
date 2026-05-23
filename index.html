@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Spectral:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <header class="site-header">
+      <a href="#" class="logo">Northline</a>
+      <nav class="nav" id="nav-menu" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="mailto:theobadenhorst18@gmail.com">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        Menu
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Starter Template</p>
+        <h1>Build fast. Launch clean.</h1>
+        <p class="lead">
+          A modern base website with responsive layout, motion, and clean structure
+          ready for your content.
+        </p>
+        <div class="actions">
+          <a href="mailto:theobadenhorst18@gmail.com" class="btn btn-primary">Get Started</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+      </section>
+
+      <section class="card-grid" id="services">
+        <article class="card">
+          <h2>Design</h2>
+          <p>Intentional visual direction with reusable style tokens.</p>
+        </article>
+        <article class="card">
+          <h2>Development</h2>
+          <p>Simple, semantic structure that scales into bigger projects.</p>
+        </article>
+        <article class="card">
+          <h2>Delivery</h2>
+          <p>Ready-to-edit starter files you can use immediately.</p>
+        </article>
+      </section>
+
+      <section class="about" id="about">
+        <h2>About This Base</h2>
+        <p>
+          This template gives you an opinionated but flexible starting point:
+          typography, spacing, color tokens, responsive behavior, and subtle
+          entrance animations.
+        </p>
+      </section>
+
+      <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <form
+          class="contact-form"
+          action="mailto:theobadenhorst18@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <label>
+            Name
+            <input type="text" placeholder="Your name" />
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="you@example.com" />
+          </label>
+          <label>
+            Message
+            <textarea rows="4" placeholder="Tell us about your project"></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Northline. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
