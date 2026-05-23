@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Base Website</title>
+    <title>NELMECH</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,20 +17,27 @@
     <div class="bg-shape bg-shape-2"></div>
 
     <header class="site-header">
-      <a href="#" class="logo">Northline</a>
+      <a href="#" class="logo">NELMECH</a>
       <nav class="nav" id="nav-menu" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="mailto:theobadenhorst18@gmail.com">Contact</a>
       </nav>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-label="Toggle menu"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+      >
         Menu
       </button>
     </header>
 
     <main>
       <section class="hero">
-        <p class="eyebrow">Starter Template</p>
+        <p class="eyebrow">NELMECH</p>
         <h1>Build fast. Launch clean.</h1>
         <p class="lead">
           A modern base website with responsive layout, motion, and clean structure
@@ -76,15 +83,20 @@
         >
           <label>
             Name
-            <input type="text" placeholder="Your name" />
+            <input type="text" name="name" placeholder="Your name" required />
           </label>
           <label>
             Email
-            <input type="email" placeholder="you@example.com" />
+            <input type="email" name="email" placeholder="you@example.com" required />
           </label>
           <label>
             Message
-            <textarea rows="4" placeholder="Tell us about your project"></textarea>
+            <textarea
+              rows="4"
+              name="message"
+              placeholder="Tell us about your project"
+              required
+            ></textarea>
           </label>
           <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
@@ -92,7 +104,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; <span id="year"></span> Northline. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> NELMECH. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
