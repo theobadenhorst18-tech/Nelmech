@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const { name, email, message } = getBody(req);
+  const { name, email, message, service } = getBody(req);
 
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, error: "All fields are required" });
@@ -65,6 +65,7 @@ module.exports = async function handler(req, res) {
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
+        service ? `Service: ${service}` : "",
         "",
         "Message:",
         message,

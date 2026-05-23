@@ -1,7 +1,8 @@
-const contactForm = document.getElementById("contact-form");
-const statusEl = document.getElementById("contact-status");
+const contactForms = document.querySelectorAll(".contact-form");
 
-if (contactForm) {
+contactForms.forEach((contactForm) => {
+  const statusEl = contactForm.querySelector(".contact-status");
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -10,6 +11,7 @@ if (contactForm) {
       name: String(formData.get("name") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       message: String(formData.get("message") || "").trim(),
+      service: String(formData.get("service") || "").trim(),
     };
 
     if (!payload.name || !payload.email || !payload.message) {
@@ -49,4 +51,4 @@ if (contactForm) {
       console.error("Contact submit error:", error);
     }
   });
-}
+});
