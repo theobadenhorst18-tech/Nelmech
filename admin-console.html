@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nelmech Admin Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="section dark">
+    <div class="admin-console">
+      <h1>Project Console</h1>
+      <p class="admin-note">
+        Use this page to add, edit, and delete projects. This page is intentionally not linked from the main website.
+      </p>
+      <p class="admin-note">
+        First time opening this page, you will be prompted to create your local admin email and password.
+      </p>
+
+      <form id="project-form" class="admin-form">
+        <input id="project-id" type="hidden" />
+        <label for="project-title">Project Title</label>
+        <input id="project-title" type="text" required />
+
+        <label for="project-card-text">Project Card Text</label>
+        <textarea id="project-card-text" rows="3" required></textarea>
+
+        <label for="project-detail-text">Project Detail Paragraph</label>
+        <textarea id="project-detail-text" rows="5" required></textarea>
+
+        <label for="project-video-url">YouTube URL</label>
+        <input id="project-video-url" type="url" placeholder="https://www.youtube.com/watch?v=..." />
+
+        <label for="project-cover-image">Cover Image Upload</label>
+        <input id="project-cover-image" type="file" accept="image/*" />
+
+        <label for="project-gallery-images">Gallery Images Upload (multiple)</label>
+        <input id="project-gallery-images" type="file" accept="image/*" multiple />
+
+        <div class="admin-buttons">
+          <button type="submit" id="save-project-btn">Save Project</button>
+          <button type="button" id="reset-form-btn">Clear Form</button>
+        </div>
+      </form>
+
+      <h2>Existing Projects</h2>
+      <div id="admin-project-list" class="admin-project-list"></div>
+    </div>
+  </section>
+
+  <script src="projects-data.js"></script>
+  <script src="admin-console.js"></script>
+</body>
+</html>
