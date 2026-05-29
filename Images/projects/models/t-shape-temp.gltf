@@ -1,0 +1,78 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Codex temporary T-shape generator"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.95,
+          0.75,
+          0.15,
+          1
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.7
+      }
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "data:application/octet-stream;base64,AACAvwAAgD6amRk+AACAPwAAgD6amRk+AACAP5qZWT+amRk+AACAvwAAgD6amRk+AACAP5qZWT+amRk+AACAv5qZWT+amRk+AACAPwAAgD6amRm+AACAvwAAgD6amRm+AACAv5qZWT+amRm+AACAPwAAgD6amRm+AACAv5qZWT+amRm+AACAP5qZWT+amRm+AACAvwAAgD6amRm+AACAvwAAgD6amRk+AACAv5qZWT+amRk+AACAvwAAgD6amRm+AACAv5qZWT+amRk+AACAv5qZWT+amRm+AACAPwAAgD6amRk+AACAPwAAgD6amRm+AACAP5qZWT+amRm+AACAPwAAgD6amRk+AACAP5qZWT+amRm+AACAP5qZWT+amRk+AACAv5qZWT+amRk+AACAP5qZWT+amRk+AACAP5qZWT+amRm+AACAv5qZWT+amRk+AACAP5qZWT+amRm+AACAv5qZWT+amRm+AACAvwAAgD6amRm+AACAPwAAgD6amRm+AACAPwAAgD6amRk+AACAvwAAgD6amRm+AACAPwAAgD6amRk+AACAvwAAgD6amRk+MzOzvmZmhr+amRk+MzOzPmZmhr+amRk+MzOzPjMzsz6amRk+MzOzvmZmhr+amRk+MzOzPjMzsz6amRk+MzOzvjMzsz6amRk+MzOzPmZmhr+amRm+MzOzvmZmhr+amRm+MzOzvjMzsz6amRm+MzOzPmZmhr+amRm+MzOzvjMzsz6amRm+MzOzPjMzsz6amRm+MzOzvmZmhr+amRm+MzOzvmZmhr+amRk+MzOzvjMzsz6amRk+MzOzvmZmhr+amRm+MzOzvjMzsz6amRk+MzOzvjMzsz6amRm+MzOzPmZmhr+amRk+MzOzPmZmhr+amRm+MzOzPjMzsz6amRm+MzOzPmZmhr+amRk+MzOzPjMzsz6amRm+MzOzPjMzsz6amRk+MzOzvjMzsz6amRk+MzOzPjMzsz6amRk+MzOzPjMzsz6amRm+MzOzvjMzsz6amRk+MzOzPjMzsz6amRm+MzOzvjMzsz6amRm+MzOzvmZmhr+amRm+MzOzPmZmhr+amRm+MzOzPmZmhr+amRk+MzOzvmZmhr+amRm+MzOzPmZmhr+amRk+MzOzvmZmhr+amRk+",
+      "byteLength": 864
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 864,
+      "target": 34962
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 72,
+      "type": "VEC3",
+      "min": [
+        -1,
+        -1.0499999999999998,
+        -0.15
+      ],
+      "max": [
+        1,
+        0.8500000000000001,
+        0.15
+      ]
+    }
+  ]
+}

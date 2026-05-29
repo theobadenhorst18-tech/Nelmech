@@ -11,6 +11,8 @@ const NELMECH_DEFAULT_PROJECTS = [
     detailText:
       "This Catuane project focused on building a reliable on-farm drying operation with a practical blend of mechanical and automation systems. The plant was designed to support consistent throughput while allowing remote monitoring for faster fault diagnosis and reduced downtime.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    modelUrl: "Images/projects/models/t-shape-temp.gltf",
+    modelPoster: "Images/projects/catuane-mozambique.jpg",
     coverImage: "Images/projects/catuane-mozambique.jpg",
     galleryImages: [
       "Images/projects/catuane-mozambique.jpg",
@@ -29,6 +31,8 @@ const NELMECH_DEFAULT_PROJECTS = [
     detailText:
       "The White River cold room project required a tailored design that balanced thermal performance, operational flow, and ease of maintenance. We delivered a customized insulated room solution for controlled storage and partitioned zones.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    modelUrl: "Images/projects/models/t-shape-temp.gltf",
+    modelPoster: "Images/projects/white-river-cold-rooms.jpg",
     coverImage: "Images/projects/white-river-cold-rooms.jpg",
     galleryImages: [
       "Images/projects/white-river-cold-rooms.jpg",
@@ -47,6 +51,8 @@ const NELMECH_DEFAULT_PROJECTS = [
     detailText:
       "This food processing installation centered on robust stainless pipework, low-pressure air distribution, and clean mechanical execution suited to a production environment. The outcome is a cleaner, more reliable production setup with improved utility routing.",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    modelUrl: "Images/projects/models/t-shape-temp.gltf",
+    modelPoster: "Images/projects/white-river-food-processing.jpg",
     coverImage: "Images/projects/white-river-food-processing.jpg",
     galleryImages: [
       "Images/projects/white-river-food-processing.jpg",
@@ -77,7 +83,15 @@ function nelmechGetProjects() {
     if (!Array.isArray(parsed)) {
       return [...NELMECH_DEFAULT_PROJECTS];
     }
-    return parsed;
+    const defaultsById = new Map(NELMECH_DEFAULT_PROJECTS.map((project) => [project.id, project]));
+    return parsed.map((project) => {
+      const fallback = defaultsById.get(project.id) || {};
+      return {
+        ...project,
+        modelUrl: (project.modelUrl || fallback.modelUrl || "").trim(),
+        modelPoster: (project.modelPoster || fallback.modelPoster || project.coverImage || "").trim()
+      };
+    });
   } catch (error) {
     return [...NELMECH_DEFAULT_PROJECTS];
   }

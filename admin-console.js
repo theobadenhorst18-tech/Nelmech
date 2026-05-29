@@ -56,6 +56,8 @@ function setFormData(project) {
   document.getElementById("project-card-text").value = project?.cardText || "";
   document.getElementById("project-detail-text").value = project?.detailText || "";
   document.getElementById("project-video-url").value = project?.videoUrl || "";
+  document.getElementById("project-model-url").value = project?.modelUrl || "";
+  document.getElementById("project-model-poster").value = project?.modelPoster || "";
   document.getElementById("project-cover-image").value = "";
   document.getElementById("project-gallery-images").value = "";
 }
@@ -119,6 +121,8 @@ async function onSubmitProjectForm(event) {
   const cardInput = document.getElementById("project-card-text");
   const detailInput = document.getElementById("project-detail-text");
   const videoInput = document.getElementById("project-video-url");
+  const modelUrlInput = document.getElementById("project-model-url");
+  const modelPosterInput = document.getElementById("project-model-poster");
   const coverInput = document.getElementById("project-cover-image");
   const galleryInput = document.getElementById("project-gallery-images");
 
@@ -138,6 +142,8 @@ async function onSubmitProjectForm(event) {
     cardText: cardInput.value.trim(),
     detailText: detailInput.value.trim(),
     videoUrl: videoInput.value.trim(),
+    modelUrl: modelUrlInput.value.trim(),
+    modelPoster: modelPosterInput.value.trim(),
     coverImage: coverUpload[0] || (editingProject ? editingProject.coverImage : "Images/Welder.jpg"),
     galleryImages:
       galleryUploads.length > 0
