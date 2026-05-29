@@ -114,13 +114,70 @@ function initContactForms() {
   });
 }
 
+async function initHeroSlideshow() {
+  const activeImage = document.querySelector(".hero .hero-bg--active");
+  const nextImage = document.querySelector(".hero .hero-bg--next");
+
+  if (!activeImage || !nextImage) {
+    return;
+  }
+
+  const fallbackImages = [
+    "hero/20240821_151055-1920.webp",
+    "hero/20240821_151617-1920.webp",
+    "hero/20250311_170830-1920 (1).webp",
+    "hero/20250724_140315-1920.webp"
+  ];
+  let heroImages = fallbackImages;
+
+  try {
+    const response = await fetch("/api/hero-images");
+    const result = await response.json();
+
+    if (response.ok && result.success && Array.isArray(result.images) && result.images.length > 0) {
+      heroImages = result.images;
+    }
+  } catch (error) {
+    console.warn("Falling back to hardcoded hero image list.", error);
+  }
+
+  if (heroImages.length === 0) {
+    return;
+  }
+
+  activeImage.src = heroImages[0];
+  nextImage.src = heroImages[1 % heroImages.length];
+
+  if (heroImages.length < 2) {
+    return;
+  }
+
+  let currentIndex = 0;
+  let showingActiveImage = true;
+
+  setInterval(() => {
+    const nextIndex = (currentIndex + 1) % heroImages.length;
+    const visibleLayer = showingActiveImage ? activeImage : nextImage;
+    const hiddenLayer = showingActiveImage ? nextImage : activeImage;
+
+    hiddenLayer.src = heroImages[nextIndex];
+    hiddenLayer.classList.add("hero-bg--active");
+    visibleLayer.classList.remove("hero-bg--active");
+
+    currentIndex = nextIndex;
+    showingActiveImage = !showingActiveImage;
+  }, 5000);
+}
+
 window.NelmechUI = {
   initMenus,
-  initGalleries
+  initGalleries,
+  initHeroSlideshow
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   initMenus();
   initGalleries();
+  initHeroSlideshow();
   initContactForms();
 });
