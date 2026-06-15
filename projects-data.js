@@ -10,7 +10,6 @@ const NELMECH_DEFAULT_PROJECTS = [
       "On farm drying facility, with remote access for online monitoring and fault finding, PLC controlled drying room with NIS sizing and bulk bagging.",
     detailText:
       "This Catuane project focused on building a reliable on-farm drying operation with a practical blend of mechanical and automation systems. The plant was designed to support consistent throughput while allowing remote monitoring for faster fault diagnosis and reduced downtime.",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     modelUrl: "Images/projects/models/t-shape-temp.gltf",
     modelPoster: "Images/projects/catuane-mozambique.jpg",
     coverImage: "Images/projects/catuane-mozambique.jpg",
@@ -30,7 +29,6 @@ const NELMECH_DEFAULT_PROJECTS = [
       "Insulated Cold Rooms, we design, supply and install customized cool rooms for storage, temp controlled rooms and partitioning.",
     detailText:
       "The White River cold room project required a tailored design that balanced thermal performance, operational flow, and ease of maintenance. We delivered a customized insulated room solution for controlled storage and partitioned zones.",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     modelUrl: "Images/projects/models/t-shape-temp.gltf",
     modelPoster: "Images/projects/white-river-cold-rooms.jpg",
     coverImage: "Images/projects/white-river-cold-rooms.jpg",
@@ -50,7 +48,6 @@ const NELMECH_DEFAULT_PROJECTS = [
       "Food Processing Plant, low pressure air, pipework, stainless welding and installation.",
     detailText:
       "This food processing installation centered on robust stainless pipework, low-pressure air distribution, and clean mechanical execution suited to a production environment. The outcome is a cleaner, more reliable production setup with improved utility routing.",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     modelUrl: "Images/projects/models/t-shape-temp.gltf",
     modelPoster: "Images/projects/white-river-food-processing.jpg",
     coverImage: "Images/projects/white-river-food-processing.jpg",
@@ -99,18 +96,6 @@ function nelmechGetProjects() {
 
 function nelmechSaveProjects(projects) {
   localStorage.setItem(NELMECH_PROJECTS_KEY, JSON.stringify(projects));
-}
-
-function nelmechYoutubeEmbedUrl(url) {
-  if (!url) {
-    return "";
-  }
-  const youtubeIdMatch =
-    url.match(/[?&]v=([^&]+)/) ||
-    url.match(/youtu\.be\/([^?&]+)/) ||
-    url.match(/youtube\.com\/embed\/([^?&]+)/);
-  const videoId = youtubeIdMatch ? youtubeIdMatch[1] : "";
-  return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
 }
 
 function nelmechGetAdminCredentials() {

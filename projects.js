@@ -50,21 +50,11 @@ function renderProjectDetailPage() {
 
   const galleryImages = Array.isArray(project.galleryImages) ? project.galleryImages : [];
   const imageSets = chunkInThrees(galleryImages.length ? galleryImages : [project.coverImage]);
-  const embedUrl = nelmechYoutubeEmbedUrl(project.videoUrl);
   const modelUrl = (project.modelUrl || "").trim();
   const modelPoster = (project.modelPoster || "").trim();
 
   root.innerHTML = `
     <h1>${project.title}</h1>
-
-    <div class="project-video">
-      <h2>Project Video</h2>
-      ${
-        embedUrl
-          ? `<iframe src="${embedUrl}" title="${project.title} Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
-          : "<p>No video added yet.</p>"
-      }
-    </div>
 
     <div class="project-model-section">
       <h2>3D CAD Model</h2>

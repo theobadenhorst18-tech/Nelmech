@@ -409,25 +409,11 @@
   color: #0f172a;
 }
 
-.project-video {
-  margin-top: 24px;
-}
-
-.project-video h2,
 .project-model-section h2,
 .project-gallery-section h2,
 .project-description h2 {
   margin-bottom: 12px;
   color: #0f172a;
-}
-
-.project-video iframe {
-  width: 100%;
-  max-width: 960px;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  border-radius: 6px;
-  display: block;
 }
 
 .project-gallery-shell {
@@ -632,6 +618,17 @@
     flex-direction: column;
     max-width: 400px;
     margin: auto;
+  }
+
+  #contact .contact-form {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 28px;
+  }
+
+  #contact .contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
   }
   
   input, textarea {

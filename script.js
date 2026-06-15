@@ -106,7 +106,8 @@ function initContactForms() {
         contactForm.reset();
       } catch (error) {
         if (statusEl) {
-          statusEl.textContent = "Message failed to send. Please try again.";
+          statusEl.textContent =
+            error instanceof Error ? error.message : "Message failed to send. Please try again.";
         }
         console.error("Contact submit error:", error);
       }
