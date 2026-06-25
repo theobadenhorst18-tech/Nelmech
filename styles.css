@@ -652,9 +652,9 @@
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.4fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 40px;
-    max-width: 1100px;
+    max-width: 760px;
     margin: 0 auto;
   }
 
@@ -695,21 +695,13 @@
     font-style: normal;
   }
 
-  .footer-column address a,
-  .footer-links a {
+  .footer-column address a {
     color: #cbd5e1;
     text-decoration: none;
   }
 
-  .footer-column address a:hover,
-  .footer-links a:hover {
+  .footer-column address a:hover {
     color: #facc15;
-  }
-
-  .footer-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 10px 24px;
   }
 
   @media (max-width: 700px) {
@@ -725,7 +717,4 @@
       border-left: 0;
     }
 
-    .footer-links {
-      grid-template-columns: 1fr;
-    }
   }
