@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CONTACT_TO_EMAIL = "gabriel@nelmech.co.za";
 
 function getBody(req) {
   if (!req.body) return {};
@@ -35,11 +36,10 @@ module.exports = async function handler(req, res) {
     SMTP_PORT,
     SMTP_USER,
     SMTP_PASS,
-    CONTACT_TO_EMAIL,
     CONTACT_FROM_EMAIL,
   } = process.env;
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
+  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
     return res.status(500).json({
       success: false,
       error: "Email service is not configured",
