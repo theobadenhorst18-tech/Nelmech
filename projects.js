@@ -16,7 +16,7 @@ function renderProjectsOnIndex() {
   container.innerHTML = projects
     .map(
       (project) => `
-      <a class="project-card-link" href="project.html?id=${project.id}">
+      <div class="project-card-link">
         <article class="project-card">
           <div class="project-card__image-wrap">
             <img class="project-card__image" src="${project.coverImage}" alt="${project.title}" loading="lazy" decoding="async" />
@@ -26,7 +26,7 @@ function renderProjectsOnIndex() {
             <p>${project.cardText}</p>
           </div>
         </article>
-      </a>
+      </div>
     `
     )
     .join("");
