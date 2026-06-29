@@ -375,6 +375,82 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* Service detail page heroes */
+.service-hero {
+  position: relative;
+  min-height: clamp(420px, 62vh, 650px);
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  background-color: #0f172a;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.service-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 6, 23, 0.88) 0%,
+    rgba(2, 6, 23, 0.64) 48%,
+    rgba(2, 6, 23, 0.2) 100%
+  );
+}
+
+.service-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 72px 0;
+  text-align: left;
+}
+
+.service-hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #facc15;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.service-hero h1 {
+  max-width: 780px;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.service-hero p {
+  max-width: 680px;
+  margin-top: 18px;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.service-hero--electrical-installations {
+  background-image: url("Images/Electrical Installations.jpg");
+}
+
+.service-hero--maintenance-repairs {
+  background-image: url("Images/Maintenance and Installations.jpg");
+}
+
+.service-hero--industrial-automation {
+  background-image: url("Images/Industrial Automation.jpg");
+}
+
+.service-hero--mechanical-engineering {
+  background-image: url("Images/Mechanical Engineering.jpg");
+}
+
 .service-detail {
   max-width: 900px;
   margin: auto;
@@ -584,6 +660,24 @@
 
   .hero h1 {
     font-size: 36px;
+  }
+
+  .service-hero {
+    min-height: 520px;
+    background-position: center;
+  }
+
+  .service-hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(2, 6, 23, 0.25) 0%,
+      rgba(2, 6, 23, 0.88) 100%
+    );
+  }
+
+  .service-hero__content {
+    width: min(100% - 40px, 680px);
+    padding: 50px 0;
   }
 
   .location-map iframe {
