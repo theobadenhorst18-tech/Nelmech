@@ -380,7 +380,7 @@
   position: relative;
   min-height: clamp(420px, 62vh, 650px);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   color: #fff;
   background-color: #0f172a;
   background-position: center;
@@ -408,16 +408,6 @@
   margin: 0 auto;
   padding: 72px 0;
   text-align: left;
-}
-
-.service-hero__eyebrow {
-  display: inline-block;
-  margin-bottom: 10px;
-  color: #facc15;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 .service-hero h1 {
