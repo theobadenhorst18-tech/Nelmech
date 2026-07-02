@@ -3,7 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "description": "NELMECH static site with Vercel serverless contact API",
+  "scripts": {
+    "test": "node --test"
+  },
   "dependencies": {
-    "nodemailer": "^6.9.15"
+    "nodemailer": "^9.0.3"
   }
 }
