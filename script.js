@@ -62,6 +62,7 @@ function initContactForms() {
 
   contactForms.forEach((contactForm) => {
     const statusEl = contactForm.querySelector(".contact-status");
+    const submitButton = contactForm.querySelector('button[type="submit"]');
 
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -84,6 +85,9 @@ function initContactForms() {
       if (statusEl) {
         statusEl.textContent = "Sending...";
       }
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
 
       try {
         const response = await fetch("/api/contact", {
@@ -94,10 +98,19 @@ function initContactForms() {
           body: JSON.stringify(payload)
         });
 
-        const result = await response.json();
+        const responseText = await response.text();
+        let result = {};
+
+        if (responseText) {
+          try {
+            result = JSON.parse(responseText);
+          } catch {
+            result = {};
+          }
+        }
 
         if (!response.ok || !result.success) {
-          throw new Error(result.error || "Failed to send message");
+          throw new Error(result.error || "Message failed to send. Please try again.");
         }
 
         if (statusEl) {
@@ -110,6 +123,10 @@ function initContactForms() {
             error instanceof Error ? error.message : "Message failed to send. Please try again.";
         }
         console.error("Contact submit error:", error);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
       }
     });
   });
@@ -173,7 +190,8 @@ async function initHeroSlideshow() {
 window.NelmechUI = {
   initMenus,
   initGalleries,
-  initHeroSlideshow
+  initHeroSlideshow,
+  initContactForms
 };
 
 document.addEventListener("DOMContentLoaded", () => {
