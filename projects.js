@@ -6,6 +6,31 @@ function chunkInThrees(items) {
   return grouped;
 }
 
+function renderProjectCards(container, projects) {
+  container.innerHTML = projects
+    .map(
+      (project) => `
+      <a class="project-card-link" href="project.html?id=${project.id}">
+        <article class="project-card">
+          <div class="project-card__image-wrap">
+            ${
+              project.coverVideo
+                ? `<video class="project-card__image" src="${project.coverImage}#t=0.1" aria-label="${project.title}" preload="metadata" muted playsinline></video>`
+                : `<img class="project-card__image" src="${project.coverImage}" alt="${project.title}" loading="lazy" decoding="async" />`
+            }
+          </div>
+          <div class="project-card__body">
+            <h3>${project.title}</h3>
+            ${project.subtitle ? `<p class="project-card__subtitle">${project.subtitle}</p>` : ""}
+            <p>${project.cardText}</p>
+          </div>
+        </article>
+      </a>
+    `
+    )
+    .join("");
+}
+
 function renderProjectsOnIndex() {
   const container = document.getElementById("projects-grid");
   if (!container) {
@@ -13,23 +38,17 @@ function renderProjectsOnIndex() {
   }
 
   const projects = nelmechGetProjects();
-  container.innerHTML = projects
-    .map(
-      (project) => `
-      <div class="project-card-link">
-        <article class="project-card">
-          <div class="project-card__image-wrap">
-            <img class="project-card__image" src="${project.coverImage}" alt="${project.title}" loading="lazy" decoding="async" />
-          </div>
-          <div class="project-card__body">
-            <h3>${project.title}</h3>
-            <p>${project.cardText}</p>
-          </div>
-        </article>
-      </div>
-    `
-    )
-    .join("");
+  renderProjectCards(container, projects);
+}
+
+function renderCommunityProjectsOnIndex() {
+  const container = document.getElementById("community-projects-grid");
+  if (!container) {
+    return;
+  }
+
+  const projects = nelmechGetCommunityProjects();
+  renderProjectCards(container, projects);
 }
 
 function renderProjectDetailPage() {
@@ -38,7 +57,7 @@ function renderProjectDetailPage() {
     return;
   }
 
-  const projects = nelmechGetProjects();
+  const projects = [...nelmechGetProjects(), ...nelmechGetCommunityProjects()];
   const params = new URLSearchParams(window.location.search);
   const requestedId = params.get("id");
   const project = projects.find((item) => item.id === requestedId) || projects[0];
@@ -52,41 +71,53 @@ function renderProjectDetailPage() {
   const imageSets = chunkInThrees(galleryImages.length ? galleryImages : [project.coverImage]);
   const modelUrl = (project.modelUrl || "").trim();
   const modelPoster = (project.modelPoster || "").trim();
+  const videoUrl = (project.videoUrl || (project.coverVideo ? project.coverImage : "") || "").trim();
 
   root.innerHTML = `
+    ${
+      videoUrl
+        ? `<div class="project-video-section"><video class="project-video" src="${videoUrl}" controls preload="metadata" playsinline></video></div>`
+        : ""
+    }
+
     <h1>${project.title}</h1>
+    ${project.subtitle ? `<p class="project-detail__subtitle">${project.subtitle}</p>` : ""}
 
-    <div class="project-model-section">
-      <h2>3D CAD Model</h2>
-      ${
-        modelUrl
-          ? `<model-viewer class="project-model-viewer" src="${modelUrl}" poster="${modelPoster}" alt="${project.title} 3D CAD model" camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1" exposure="1"></model-viewer>`
-          : "<p>3D model will be added soon.</p>"
-      }
-    </div>
+    ${
+      modelUrl
+        ? `<div class="project-model-section">
+            <h2>3D CAD Model</h2>
+            <model-viewer class="project-model-viewer" src="${modelUrl}" poster="${modelPoster}" alt="${project.title} 3D CAD model" camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1" exposure="1"></model-viewer>
+          </div>`
+        : ""
+    }
 
-    <div class="project-gallery-section">
-      <h2>Project Photos</h2>
-      <div class="project-gallery">
-        <div class="project-gallery-shell">
-          <button class="gallery-nav gallery-nav--prev" type="button" aria-label="Previous photo set">&larr;</button>
-          <div class="project-gallery-window">
-            <div class="project-gallery-track">
-              ${imageSets
-                .map(
-                  (set) => `
-                    <div class="project-gallery-set">
-                      ${set.map((image) => `<img src="${image}" alt="${project.title} photo" loading="lazy" />`).join("")}
-                    </div>
-                  `
-                )
-                .join("")}
+    ${
+      galleryImages.length
+        ? `<div class="project-gallery-section">
+            <h2>Project Photos</h2>
+            <div class="project-gallery">
+              <div class="project-gallery-shell">
+                <button class="gallery-nav gallery-nav--prev" type="button" aria-label="Previous photo set">&larr;</button>
+                <div class="project-gallery-window">
+                  <div class="project-gallery-track">
+                    ${imageSets
+                      .map(
+                        (set) => `
+                          <div class="project-gallery-set">
+                            ${set.map((image) => `<img src="${image}" alt="${project.title} photo" loading="lazy" />`).join("")}
+                          </div>
+                        `
+                      )
+                      .join("")}
+                  </div>
+                </div>
+                <button class="gallery-nav gallery-nav--next" type="button" aria-label="Next photo set">&rarr;</button>
+              </div>
             </div>
-          </div>
-          <button class="gallery-nav gallery-nav--next" type="button" aria-label="Next photo set">&rarr;</button>
-        </div>
-      </div>
-    </div>
+          </div>`
+        : ""
+    }
 
     <div class="project-description">
       <h2>Project Summary</h2>
@@ -101,5 +132,6 @@ function renderProjectDetailPage() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProjectsOnIndex();
+  renderCommunityProjectsOnIndex();
   renderProjectDetailPage();
 });

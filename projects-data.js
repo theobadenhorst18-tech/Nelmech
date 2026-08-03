@@ -1,4 +1,5 @@
 const NELMECH_PROJECTS_KEY = "nelmech_projects_v1";
+const NELMECH_COMMUNITY_PROJECTS_KEY = "nelmech_community_projects_v1";
 const NELMECH_ADMIN_EMAIL_KEY = "nelmech_admin_email";
 const NELMECH_ADMIN_PASSWORD_KEY = "nelmech_admin_password";
 
@@ -62,6 +63,21 @@ const NELMECH_DEFAULT_PROJECTS = [
   }
 ];
 
+const NELMECH_DEFAULT_COMMUNITY_PROJECTS = [
+  {
+    id: "sinani-msholozi",
+    title: "Sinani Msholozi",
+    subtitle: "Kids & Youth Centre",
+    cardText:
+      "The Msholozi Kids & Youth Centre now has a new roof, providing children with a safe, dry space throughout the rainy season. This project shows the lasting difference we can make when we work together.",
+    detailText:
+      "The Msholozi Kids & Youth Centre now has a new roof, providing children with a safe, dry space throughout the rainy season. This project shows the lasting difference we can make when we work together.",
+    coverImage: "Images/community-projects/Sinani 1.mp4",
+    coverVideo: true,
+    videoUrl: "Images/community-projects/Sinani 1.mp4"
+  }
+];
+
 function nelmechSlugify(value) {
   return value
     .toLowerCase()
@@ -81,21 +97,48 @@ function nelmechGetProjects() {
       return [...NELMECH_DEFAULT_PROJECTS];
     }
     const defaultsById = new Map(NELMECH_DEFAULT_PROJECTS.map((project) => [project.id, project]));
-    return parsed.map((project) => {
-      const fallback = defaultsById.get(project.id) || {};
-      return {
-        ...project,
-        modelUrl: (project.modelUrl || fallback.modelUrl || "").trim(),
-        modelPoster: (project.modelPoster || fallback.modelPoster || project.coverImage || "").trim()
-      };
-    });
+    return parsed
+      .filter((project) => project.id !== "sinani-msholozi")
+      .map((project) => {
+        const fallback = defaultsById.get(project.id) || {};
+
+        if (
+          project.id === "catuane-mozambique" &&
+          /sinani|msholozi/i.test(`${project.title || ""} ${project.subtitle || ""}`)
+        ) {
+          return { ...fallback };
+        }
+
+        return {
+          ...project,
+          modelUrl: (project.modelUrl || fallback.modelUrl || "").trim(),
+          modelPoster: (project.modelPoster || fallback.modelPoster || project.coverImage || "").trim()
+        };
+      });
   } catch (error) {
     return [...NELMECH_DEFAULT_PROJECTS];
   }
 }
 
+function nelmechGetCommunityProjects() {
+  const raw = localStorage.getItem(NELMECH_COMMUNITY_PROJECTS_KEY);
+  if (!raw) {
+    return [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
+  }
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
+  } catch (error) {
+    return [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
+  }
+}
+
 function nelmechSaveProjects(projects) {
   localStorage.setItem(NELMECH_PROJECTS_KEY, JSON.stringify(projects));
+}
+
+function nelmechSaveCommunityProjects(projects) {
+  localStorage.setItem(NELMECH_COMMUNITY_PROJECTS_KEY, JSON.stringify(projects));
 }
 
 function nelmechGetAdminCredentials() {
