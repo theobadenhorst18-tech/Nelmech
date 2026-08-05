@@ -504,7 +504,8 @@
 
 .project-model-section h2,
 .project-gallery-section h2,
-.project-description h2 {
+.project-description h2,
+.project-testimonial h2 {
   margin-bottom: 12px;
   color: #0f172a;
 }
@@ -576,6 +577,21 @@
 
 .project-description p {
   color: #374151;
+}
+
+.project-testimonial {
+  margin-top: 24px;
+  border-left: 4px solid #0f172a;
+  padding: 16px 18px;
+  background: #f8fafc;
+  border-radius: 0 6px 6px 0;
+}
+
+.project-testimonial blockquote {
+  margin: 0;
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .admin-console {

@@ -123,6 +123,15 @@ function renderProjectDetailPage() {
       <h2>Project Summary</h2>
       <p>${project.detailText}</p>
     </div>
+
+    ${
+      project.testimonial
+        ? `<div class="project-testimonial">
+            <h2>Testimonial</h2>
+            <blockquote>${project.testimonial}</blockquote>
+          </div>`
+        : ""
+    }
   `;
 
   if (window.NelmechUI && typeof window.NelmechUI.initGalleries === "function") {

@@ -72,6 +72,8 @@ const NELMECH_DEFAULT_COMMUNITY_PROJECTS = [
       "The Msholozi Kids & Youth Centre now has a new roof, providing children with a safe, dry space throughout the rainy season. This project shows the lasting difference we can make when we work together.",
     detailText:
       "The Msholozi Kids & Youth Centre now has a new roof, providing children with a safe, dry space throughout the rainy season. This project shows the lasting difference we can make when we work together.",
+    testimonial:
+      "Thank you Gabriel and Jason for all the time and your expertise and love you have poured into this project. We are so deeply grateful. Would it perhaps be possible for us all to have a meeting Friday afternoon or Tuesday next week afternoon to make plans for the future with the Centre there? Or what time and days would suit you and Brenda and Craig. Much love Maria",
     coverImage: "Images/community-projects/Sinani 1.mp4",
     coverVideo: true,
     videoUrl: "Images/community-projects/Sinani 1.mp4"
@@ -127,7 +129,15 @@ function nelmechGetCommunityProjects() {
   }
   try {
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed : [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      return [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
+    }
+
+    const defaultsById = new Map(NELMECH_DEFAULT_COMMUNITY_PROJECTS.map((project) => [project.id, project]));
+    return parsed.map((project) => ({
+      ...(defaultsById.get(project.id) || {}),
+      ...project
+    }));
   } catch (error) {
     return [...NELMECH_DEFAULT_COMMUNITY_PROJECTS];
   }
