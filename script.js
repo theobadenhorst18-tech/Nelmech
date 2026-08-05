@@ -141,6 +141,15 @@ async function initHeroSlideshow() {
   }
 
   const fallbackImages = [
+    "hero/1.1.13_1.1.13.jpg",
+    "hero/1.1.14_1.1.14.jpg",
+    "hero/1.1.15_1.1.15.jpg",
+    "hero/1.1.1_1.1.1.jpg",
+    "hero/1.1.2_1.1.2.jpg",
+    "hero/1.1.4_1.1.4.jpg",
+    "hero/1.1.5_1.1.5.jpg",
+    "hero/1.1.8_1.1.8.jpg",
+    "hero/1.2.2_1.2.2.jpg",
     "hero/20240821_151055-1920.webp",
     "hero/20240821_151617-1920.webp",
     "hero/20250311_170830-1920 (1).webp",
